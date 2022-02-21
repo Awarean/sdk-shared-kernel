@@ -33,11 +33,11 @@ public class EventsTests
         sut.Update(sut);
 
         actualEventSender.Should().BeSameAs(sut);
-        actualEventSender.Should().BeAssignableTo<AuditableEntity>();
+        actualEventSender.Should().BeAssignableTo<AuditableEntity<Guid>>();
     }
 
     [Fact]
-    public void AutidableEntityInstance_Should_Be_Event_Sender()
+    public void UpdatedEntityEventArgs_Should_Reflect_Update()
     {
         var sut = new MockAuditableEntity();
         EntityUpdatedEventArgs actualEventArgs = default;
