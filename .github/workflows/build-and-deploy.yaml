@@ -48,7 +48,7 @@ jobs:
       
       - name: Mark version as beta
         if: contains(github.ref, 'refs/heads/develop')
-        run: export VERSION_TYPE= 'beta.'
+        run: export VERSION_TYPE= 'beta'
 
       - name: Pack Project
         if: contains(github.ref, 'refs/heads/main') || contains(github.ref,  'refs/heads/develop') || contains(github.ref, 'release')
