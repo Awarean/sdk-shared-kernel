@@ -9,9 +9,9 @@ namespace Awaren.Sdk.SharedKernel
 
         public event EntityUpdated OnUpdate;
 
-        protected virtual void ExecuteUpdate<T>(IEntity<T> updater, DateTime? updateDate = null)
+        protected virtual void ExecuteUpdate(string UpdatedBy, DateTime? updateDate = null)
         {
-            OnUpdate?.Invoke(this, new EntityUpdatedEventArgs(updater, updateDate ?? DateTime.Now));
+            OnUpdate?.Invoke(this, new EntityUpdatedEventArgs(UpdatedBy, updateDate ?? DateTime.Now));
         }
     }
 

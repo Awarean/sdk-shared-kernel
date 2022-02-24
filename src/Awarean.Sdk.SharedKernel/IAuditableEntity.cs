@@ -4,7 +4,6 @@ namespace Awaren.Sdk.SharedKernel
     {
         DateTime CreatedAt { get; }
         DateTime UpdatedAt { get; }
-        IEntity LastUpdater { get; }
-        void Update<T>(IEntity<T> updater);
+        string UpdatedBy { get; }
     }
 }

@@ -17,7 +17,7 @@ public class EventsTests
 
         sut.OnUpdate += (sender, eventArgs) => eventRaised = true;
 
-        sut.Update(sut);
+        sut.MockUpdate("sender", "data");
 
         eventRaised.Should().BeTrue();
     }
@@ -30,7 +30,7 @@ public class EventsTests
 
         sut.OnUpdate += (sender, eventArgs) => actualEventSender = sender;
 
-        sut.Update(sut);
+        sut.MockUpdate("sender", "data");
 
         actualEventSender.Should().BeSameAs(sut);
         actualEventSender.Should().BeAssignableTo<AuditableEntity<Guid>>();
@@ -41,13 +41,15 @@ public class EventsTests
     {
         var sut = new MockAuditableEntity();
         EntityUpdatedEventArgs actualEventArgs = default;
+        var expectedUpdater = "test runner";
+        var expectedData = "data";
 
         sut.OnUpdate += (sender, eventArgs) => actualEventArgs = eventArgs;
 
-        sut.Update(sut);
+        sut.MockUpdate(expectedUpdater, expectedData);
 
         actualEventArgs.ChangeDate.Should().Be(sut.UpdatedAt);
-        actualEventArgs.UpdatedBy.Should().Be(sut);
+        actualEventArgs.UpdatedBy.Should().Be(expectedUpdater);
     }
 
     [Fact]
@@ -56,7 +58,7 @@ public class EventsTests
         var sut = new MockAuditableEntity();
         var firstUpdate = sut.UpdatedAt;
 
-        sut.Update(sut);
+        sut.MockUpdate("sender", "data");
 
         var secondUpdate = sut.UpdatedAt;
 

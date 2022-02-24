@@ -5,17 +5,17 @@ namespace Awaren.Sdk.SharedKernel
 {
     public abstract class AuditableEntity<TKey> : Entity<TKey>, IAuditableEntity<TKey>
     {
-        public virtual DateTime CreatedAt { get; } = DateTime.Now;
+        public virtual DateTime CreatedAt { get; init; } = DateTime.Now;
 
         public virtual DateTime UpdatedAt { get; protected set; } = DateTime.Now;
 
-        public virtual IEntity LastUpdater { get; protected set; }
+        public virtual string UpdatedBy { get; protected set; }
 
-        public virtual void Update<T>(IEntity<T> updater)
+        protected virtual void Update(string updatedBy)
         {
             UpdatedAt = DateTime.Now;
-            LastUpdater = updater;
-            ExecuteUpdate(updater, UpdatedAt);
+            UpdatedBy = updatedBy;
+            ExecuteUpdate(updatedBy, UpdatedAt);
         }
     }
 }
