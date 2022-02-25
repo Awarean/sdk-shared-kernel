@@ -1,7 +1,7 @@
 using System;
 using Awarean.Sdk.SharedKernel.Events;
 using Awarean.Sdk.SharedKernel.Tests.Fixtures;
-using Awaren.Sdk.SharedKernel;
+using Awarean.Sdk.SharedKernel;
 using FluentAssertions;
 using Xunit;
 

@@ -1,5 +1,4 @@
 using System;
-using Awaren.Sdk.SharedKernel;
 
 namespace Awarean.Sdk.SharedKernel.Tests.Fixtures
 {

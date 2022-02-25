@@ -1,7 +1,7 @@
 using Awarean.Sdk.SharedKernel;
 using Awarean.Sdk.SharedKernel.Events;
 
-namespace Awaren.Sdk.SharedKernel
+namespace Awarean.Sdk.SharedKernel
 {
     public abstract class AuditableEntity<TKey> : Entity<TKey>, IAuditableEntity<TKey>
     {
