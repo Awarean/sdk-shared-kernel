@@ -60,11 +60,13 @@ jobs:
           dotnet pack src/Awarean.Sdk.SharedKernel/Awarean.Sdk.SharedKernel.csproj
           --output nupkgs
           "/p:Version=${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.PATCH }}"
+          "/p:IncludeSymbols=true"
+          "/p:SymbolPackageFormat=snupkg"
           --no-restore --no-build
 
       - name: Nuget Push
         if: contains(github.ref, 'refs/heads/main') || contains(github.ref,  'refs/heads/develop') || contains(github.ref, 'release')
         run:
-          dotnet nuget push **/nupkgs/*.nupkg
+          dotnet nuget push **/nupkgs/*nupkg
           --api-key ${{ env.NUGET_API_KEY }}
           --source ${{ env.REGISTRY_URL }}
