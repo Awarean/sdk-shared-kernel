@@ -67,6 +67,6 @@ jobs:
       - name: Nuget Push
         if: contains(github.ref, 'refs/heads/main') || contains(github.ref,  'refs/heads/develop') || contains(github.ref, 'release')
         run:
-          dotnet nuget push **/nupkgs/*nupkg
+          dotnet nuget push **/nupkgs/*.nupkg
           --api-key ${{ env.NUGET_API_KEY }}
           --source ${{ env.REGISTRY_URL }}
