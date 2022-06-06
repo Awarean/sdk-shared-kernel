@@ -1,5 +1,5 @@
 
-namespace Awarean.Sdk.SharedKernel.Repositories;
+namespace Awarean.Sdk.SharedKernel;
 
 public interface ICommandRepository<T, V> where T : IEntity<V>
 {
